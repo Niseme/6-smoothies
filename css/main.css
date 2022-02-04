@@ -11,19 +11,26 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   gap: 30px;
-  padding: 30px 0;
+  padding: 82px 0 30px 0;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
   gap: 50px;
-  padding: 0 20px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+}
+header.container {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
 }
 main.container {
   flex-direction: column;
@@ -31,39 +38,67 @@ main.container {
   align-items: center;
   min-height: calc(100vh - 120px);
 }
-.container > *:first-child {
-}
+
 .logo {
   max-height: 40px;
   margin-right: auto;
 }
-.meniu {
+
+.main-menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transform: translateY(95%);
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 6px 4px -6px #0004;
+}
+.menu-visible .main-menu {
   display: flex;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
-.meniu > a {
+.menu > a {
   color: #000;
   text-decoration: none;
 }
-.meniu > a:hover {
+.menu > a:hover {
   color: var(--primary-color);
   text-decoration: underline;
 }
+
 .hamburger {
-  font-size: 30px;
+  font-size: 2em;
 }
+
 .gallery {
   padding: 0 0.7em;
+  font-size: 40px;
   position: relative;
-  font-size: 30px;
+}
+.gallery > picture {
+  width: 100%;
+}
+.gallery > picture > img {
+  width: 100%;
 }
 .gallery > .fa {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.4em;
   text-align: center;
   color: #fff;
   background-color: var(--primary-color);
@@ -71,14 +106,11 @@ main.container {
 }
 .gallery > .fa.fa-angle-left {
   left: 0;
-  padding-right: 7px;
+  padding-right: 0.17em;
 }
 .gallery > .fa.fa-angle-right {
   right: 0;
-  padding-left: 7px;
-}
-.gallery > img {
-  width: 100%;
+  padding-left: 0.17em;
 }
 
 .text {
@@ -90,14 +122,13 @@ main.container {
   color: var(--primary-color);
   font-weight: bold;
   font-size: 17px;
-  letter-spacing: -1px;
 }
 .text > .title {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
   font-weight: 900;
+  letter-spacing: -1px;
 }
-
 .text > .contains {
   display: flex;
   flex-direction: column;
@@ -119,13 +150,13 @@ main.container {
   list-style-type: none;
 }
 .text .list-plus > li {
-  line-height: 40px;
+  line-height: 20px;
 }
 .text .list-plus > li::before {
   content: "+";
   margin-right: 10px;
   color: var(--primary-color);
-  font-size: 40px;
+  font-size: 36px;
   vertical-align: bottom;
 }
 .text .list > .list-image {
@@ -144,42 +175,51 @@ main.container {
   border-radius: 50%;
 }
 .text .list-image img {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
   object-position: center;
 }
 .text > form > button {
-  background-color: var(--primary-color);
   padding: 1em 3em;
   line-height: 1em;
-  border: none;
-  border-radius: 1.5em;
   color: #fff;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 0.5em;
+  transition: all 0.3s;
   cursor: pointer;
 }
 .text > form > button:hover {
-  background-color: var(--secondary-color);
-  border-radius: 0.5em;
-  transition: all 0.3s;
+  border-radius: 1.5em;
 }
+
 @media (min-width: 480px) {
   .container {
-    width: 460px;
+    width: 440px;
   }
 }
+
 @media (min-width: 780px) {
   .container {
     width: 660px;
   }
-  .meniu {
-    width: 660px;
+  .main-menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  .main-menu > .menu {
+    flex-direction: row;
   }
   .hamburger {
     display: none;
   }
+
   main.container {
     flex-direction: row;
   }
@@ -190,6 +230,7 @@ main.container {
     width: 45%;
   }
 }
+
 @media (min-width: 1000px) {
   .container {
     width: 900px;
@@ -198,6 +239,7 @@ main.container {
     flex-direction: row;
   }
 }
+
 @media (min-width: 1200px) {
   .container {
     width: 1100px;
