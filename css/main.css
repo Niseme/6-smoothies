@@ -8,9 +8,12 @@
 
 body {
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   gap: 30px;
+  padding-top: 20px;
 }
 
 .container {
@@ -19,8 +22,18 @@ body {
   align-items: center;
   width: 100%;
   gap: 50px;
+  padding: 0 20px;
+}
+main.container {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: calc(100% - 80px);
 }
 .container > *:first-child {
+}
+.logo {
+  max-height: 40px;
   margin-right: auto;
 }
 .meniu {
@@ -35,20 +48,10 @@ body {
   color: var(--primary-color);
   text-decoration: underline;
 }
-.icons {
-  display: flex;
-  gap: 20px;
-}
-.icons > a {
-  color: #000;
-  text-decoration: none;
-}
-.icons > a:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
+.hamburger {
+  font-size: 30px;
 }
 .gallery {
-  width: 60%;
   padding: 0 0.7em;
   position: relative;
   font-size: 30px;
@@ -62,7 +65,6 @@ body {
   line-height: 40px;
   text-align: center;
   color: #fff;
-
   background-color: var(--primary-color);
   border-radius: 50%;
 }
@@ -79,17 +81,31 @@ body {
 }
 
 .text {
-  width: 40%;
 }
 
 @media (min-width: 480px) {
   .container {
-    width: 360px;
+    width: 460px;
   }
 }
 @media (min-width: 780px) {
   .container {
     width: 660px;
+  }
+  .meniu {
+    width: 660px;
+  }
+  .hamburger {
+    display: none;
+  }
+  main.container {
+    flex-direction: row;
+  }
+  .gallery {
+    width: 60%;
+  }
+  .text {
+    width: 40%;
   }
 }
 @media (min-width: 1000px) {
